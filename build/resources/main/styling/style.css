@@ -1,0 +1,32 @@
+#btn_sideNav{
+    -fx-background-color:  #607d8b;
+    -fx-background-radius: 0;
+}
+
+#btn_sideNav:hover,#btn_sideNav:focused{
+    -fx-background-color: #546e7a;
+}
+
+#item_container{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
+    -fx-background-radius: 5;
+}
+
+#btn_closeLogin{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-background-radius: 0;
+}
+
+#btn_closeLogin:hover {
+    -fx-background-color: #546e7a;
+}
+
+#btn_login{
+    -fx-background-color:  #607d8b;
+    -fx-background-radius: 100;
+}
+
+#btn_login:hover{
+    -fx-background-color: #546e7a;
+}

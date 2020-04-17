@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+    <children>
+        <AnchorPane layoutX="269.0" layoutY="90.0" prefHeight="460.0" prefWidth="632.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="269.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+            <children>
+                <AnchorPane fx:id="pnl_Pengaturan" layoutX="20.0" layoutY="20.0" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <AnchorPane fx:id="pnl_KelolaChannel" layoutX="10.0" layoutY="10.0" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextArea fx:id="ta_messageCaption" layoutX="30.0" layoutY="110.0" prefHeight="340.0" prefWidth="725.0" wrapText="true" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="95.0" />
+                  <Button layoutX="361.0" layoutY="35.0" mnemonicParsing="false" onAction="#btn_searhFile" text="Search File">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../drawable/baseline_perm_media_black_48dp.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <TextField fx:id="tf_currentFile" editable="false" layoutX="15.0" layoutY="35.0" prefHeight="25.0" prefWidth="335.0" />
+                  <Button layoutX="461.0" layoutY="35.0" mnemonicParsing="false" onAction="#btn_clearFile" text="Clear" />
+                  <Button layoutX="15.0" layoutY="458.0" mnemonicParsing="false" onAction="#btn_sendBroadcast" prefHeight="25.0" prefWidth="75.0" text="Send" />
+                  <Text fx:id="txt_feedback" layoutX="98.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children></AnchorPane>
+                <AnchorPane fx:id="pnl_LiveChat" layoutX="10.0" layoutY="10.0" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <AnchorPane fx:id="pnl_Kecurangan" layoutX="10.0" layoutY="10.0" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <AnchorPane fx:id="pnl_Gangguan" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <AnchorPane fx:id="pnl_Instalasi" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <TableView prefHeight="510.0" prefWidth="755.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn prefWidth="108.0" text="Layanan" />
+                                <TableColumn prefWidth="85.0" text="Peruntukan" />
+                                <TableColumn minWidth="0.0" prefWidth="52.0" text="Daya" />
+                                <TableColumn prefWidth="92.0" text="Token Perdana" />
+                                <TableColumn prefWidth="87.0" text="Alamat" />
+                                <TableColumn prefWidth="125.0" text="Nama" />
+                                <TableColumn prefWidth="89.0" text="No.KTP" />
+                                <TableColumn prefWidth="116.0" text="No.Hp" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="pnl_Beranda" prefHeight="460.0" prefWidth="631.0" style="-fx-background-color: #eceff1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Pane id="item_container" layoutX="30.0" layoutY="30.0" prefHeight="510.0" prefWidth="755.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <Pane id="breadcrumb" layoutX="269.0" prefHeight="90.0" prefWidth="900.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-color: #90a4ae;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label fx:id="txt_BreadCrumb" layoutX="289.0" layoutY="45.0" text="/ Beranda" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="26.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <VBox id="menu_container" prefHeight="556.0" prefWidth="270.0" style="-fx-background-color: #607d8b; -fx-background-radius: 0 10 0 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+            <children>
+                <Pane prefHeight="84.0" prefWidth="269.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/icon.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="79.0" layoutY="26.0" text="telegram telegram.Bot" textFill="WHITE">
+                            <font>
+                                <Font name="Arial Bold" size="22.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </Pane>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btn_Beranda" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Beranda" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_home_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="94.0" mnemonicParsing="false" onAction="#btn_Instalasi" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Laporan Instalasi Listrik" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_format_list_bulleted_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="147.0" mnemonicParsing="false" onAction="#btn_Gangguan" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Laporan Gangguan Listrik" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_format_list_bulleted_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="200.0" mnemonicParsing="false" onAction="#btn_Kecurangan" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Laporan Kecurangan Listrik" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_format_list_bulleted_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="253.0" mnemonicParsing="false" onAction="#btn_LiveChat" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Permintaan Live Chat" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_headset_mic_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="306.0" mnemonicParsing="false" onAction="#btn_KelolaChannel" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Kelola Channel" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_people_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="359.0" mnemonicParsing="false" onAction="#btn_Pengaturan" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Pengaturan telegram.Bot" textFill="WHITE">
+                    <font>
+                        <Font name="Arial Bold" size="16.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../drawable/ic_settings_white.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

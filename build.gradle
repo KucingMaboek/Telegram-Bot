@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.telegrambot'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.openjfx:javafx:13.0.2'
+    implementation 'org.telegram:telegrambots:4.7'
+    implementation 'com.jfoenix:jfoenix:9.0.9'
+    implementation 'mysql:mysql-connector-java:8.0.19'
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
