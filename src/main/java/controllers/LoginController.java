@@ -31,7 +31,7 @@ public class LoginController {
         String username = String.valueOf(tf_username.getText());
         String password = String.valueOf(tf_password.getText());
         if (username.equals("admin") && password.equals("admin")) {
-                Helper.changeStage(event, "Main");
+            Helper.changeStage(event, "Main");
         } else {
             txt_hint.setText("*username/password salah");
         }

@@ -5,9 +5,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -47,6 +49,16 @@ public class Helper {
             e.printStackTrace();
         }
 
+    }
+
+    public static void moveToCenter(URL ui, BorderPane borderpane) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(ui);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borderpane.setCenter(root);
     }
 
     private static final String HOSTNAME = "localhost";

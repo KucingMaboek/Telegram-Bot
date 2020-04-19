@@ -17,11 +17,11 @@ public class Bot extends TelegramLongPollingBot {
         System.out.println(update.getMessage().getFrom().getFirstName() + ": " + update.getMessage().getText());
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
         sendMessage.setText("Hello " + update.getMessage().getFrom().getFirstName() + "\n" + update.getMessage().getText());
-//        try {
-//            sendMessage(sendMessage);
-//        } catch (TelegramApiException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            execute(sendMessage);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
