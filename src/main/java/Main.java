@@ -26,7 +26,7 @@ public class Main extends Application {
         primaryStage.show();
 
 //        telegram.Bot bot = new telegram.Bot();
-//        bot.sendPhotoToChannel(primaryStage);
+//        bot.broadcast(primaryStage);
     }
 
 
