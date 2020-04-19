@@ -95,6 +95,7 @@ public class Bot extends TelegramLongPollingBot {
         } else {
             SendMessage msg = new SendMessage().setChatId("@PLN_NewsFeed")
                     .setText(messages);
+            execute(msg);
 //            sendMessage(msg);
         }
     }

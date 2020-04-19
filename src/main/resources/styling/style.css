@@ -30,3 +30,42 @@
 #btn_login:hover{
     -fx-background-color: #546e7a;
 }
+
+/*Table Styling*/
+.table-view{
+    -fx-background-radius: 0;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header{
+    -fx-border-width: 0, 0;
+    -fx-background-color: #90a4ae;
+}
+
+.table-row-cell:hover, .table-row-cell:focused{
+    -fx-background-color: #b0bec5;
+    -fx-text-fill: black;
+}
+
+
+.table-row-cell{
+    /*-fx-background-color: -fx-table-cell-border-color, white;*/
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-view .scroll-bar:horizontal {
+    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+}
+
+/*end of table styling*/
+
+#tf_search{
+    -fx-background-radius: 5;
+}
