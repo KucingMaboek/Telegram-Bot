@@ -9,6 +9,8 @@ import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 import telegram.Bot;
+import telegram.TwitterHandler;
+import twitter4j.TwitterException;
 
 public class Main extends Application {
     @Override
@@ -18,34 +20,30 @@ public class Main extends Application {
         scene.setFill(Color.TRANSPARENT);
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(scene);
-//        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.initStyle(StageStyle.TRANSPARENT);
-//        primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);
         root.getStylesheets().add(getClass().getResource("styling/style.css").toExternalForm());
         primaryStage.show();
-
-//        telegram.Bot bot = new telegram.Bot();
-//        bot.broadcast(primaryStage);
     }
 
 
     public static void main(String[] args) {
         ApiContextInitializer.init();
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         Bot bot = new Bot();
+        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
+        TwitterHandler twitterHandler = new TwitterHandler();
+
+        try {
+            twitterHandler.configTwitter();
+        } catch (TwitterException e) {
+            e.printStackTrace();
+        }
+
         try {
             telegramBotsApi.registerBot(bot);
         } catch (TelegramApiRequestException e) {
             e.printStackTrace();
         }
-//        try {
-//            bot.sendMessageToChannel();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-
-
         launch(args);
     }
 

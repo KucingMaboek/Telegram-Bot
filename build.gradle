@@ -18,4 +18,5 @@ dependencies {
     implementation 'com.jfoenix:jfoenix:9.0.9'
     implementation 'mysql:mysql-connector-java:8.0.19'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.twitter4j:twitter4j-stream:4.0.7'
 }

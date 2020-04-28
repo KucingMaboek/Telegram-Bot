@@ -90,4 +90,10 @@ public class Bot extends TelegramLongPollingBot {
             execute(msg);
         }
     }
+
+    public void broadcast(String messages) throws TelegramApiException{
+        SendMessage msg = new SendMessage().setChatId("@PLN_NewsFeed")
+                .setText(messages);
+        execute(msg);
+    }
 }
