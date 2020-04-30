@@ -62,9 +62,9 @@ public class Helper {
     }
 
     private static final String HOSTNAME = "localhost";
-    private static final String USERNAME = "miqdad";
-    private static final String PASSWORD = "a";
-    private static final String DATABASE = "praktikum";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
+    private static final String DATABASE = "telegrambot";
     private static final int PORT = 3306;
     private static String URI = String.format("jdbc:mysql://%s:%d/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
             HOSTNAME, PORT, DATABASE);
@@ -72,6 +72,7 @@ public class Helper {
     public static Connection connectDatabase() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println("Koneksi database berhasil");
             return DriverManager.getConnection(URI, USERNAME, PASSWORD);
         } catch (ClassNotFoundException e) {
             System.out.println("Package mysql connector tidak ditemukan");

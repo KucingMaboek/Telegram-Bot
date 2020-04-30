@@ -8,9 +8,10 @@ import javafx.stage.StageStyle;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
-import telegram.Bot;
-import telegram.TwitterHandler;
+import utils.Bot;
+import utils.TwitterHandler;
 import twitter4j.TwitterException;
+import utils.Helper;
 
 public class Main extends Application {
     @Override
@@ -32,6 +33,7 @@ public class Main extends Application {
         Bot bot = new Bot();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         TwitterHandler twitterHandler = new TwitterHandler();
+        Helper.connectDatabase();
 
         try {
             twitterHandler.configTwitter();

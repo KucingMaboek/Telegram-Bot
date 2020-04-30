@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import telegram.Bot;
+import utils.Bot;
 
 import java.io.File;
 
