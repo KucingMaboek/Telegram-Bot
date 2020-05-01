@@ -9,6 +9,8 @@ import javafx.scene.layout.BorderPane;
 import utils.Helper;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainController {
 
@@ -68,4 +70,25 @@ public class MainController {
         }
     }
 
+    @FXML
+    public void initialize() {
+        Helper.moveToCenter(getClass().getResource("../views/" + "Beranda" + ".fxml"), bp_MainPane);
+        txt_BreadCrumb.setText("/ Beranda");
+
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                Helper.checkInternet();
+                Helper.connectBot();
+                Helper.connectTwitter();
+                Helper.connectDatabase();
+            }
+        };
+        Timer timer = new Timer();
+        long delay = 0;
+        long intervalPeriod = 300 * 1000;
+        timer.scheduleAtFixedRate(timerTask, delay, intervalPeriod);
+
+
+    }
 }

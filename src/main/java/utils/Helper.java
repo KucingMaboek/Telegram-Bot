@@ -7,14 +7,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
+import twitter4j.TwitterException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Helper {
+    private static String netConnectionStats;
+    private static String dbConnectionStats;
+    private static String botConnectionStats;
+    private static String twConnectionStats;
+
     public static void changePage(Event event, String namaView) {
         Node node = (Node) event.getSource();
         Scene oldScene = node.getScene();
@@ -72,16 +81,84 @@ public class Helper {
     public static Connection connectDatabase() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Koneksi database berhasil");
+            setDbConnectionStats("Terhubung");
             return DriverManager.getConnection(URI, USERNAME, PASSWORD);
         } catch (ClassNotFoundException e) {
-            System.out.println("Package mysql connector tidak ditemukan");
+            setDbConnectionStats("Package mysql connector tidak ditemukan");
             e.printStackTrace();
             return null;
         } catch (SQLException e) {
-            System.out.println("Koneksi database gagal");
             e.printStackTrace();
+            setDbConnectionStats("Koneksi database gagal");
             return null;
         }
+    }
+
+    public static void connectBot() {
+        Bot bot = new Bot();
+        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
+        try {
+            telegramBotsApi.registerBot(bot);
+            setBotConnectionStats("Terhubung");
+        } catch (TelegramApiRequestException e) {
+            e.printStackTrace();
+            setBotConnectionStats("Koneksi bot gagal");
+        }
+    }
+
+    public static void connectTwitter() {
+        TwitterHandler twitterHandler = new TwitterHandler();
+        try {
+            twitterHandler.configTwitter();
+            setTwConnectionStats("Terhubung");
+        } catch (TwitterException e) {
+            e.printStackTrace();
+            setTwConnectionStats("Koneksi twitter gagal");
+        }
+    }
+
+    public static void checkInternet() {
+        try {
+            URL url = new URL("https://www.geeksforgeeks.org/");
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            setNetConnectionStats("Terhubung");
+            System.out.println("Connection Successful");
+        } catch (Exception e) {
+            e.printStackTrace();
+            setNetConnectionStats("Tidak ada akses internet");
+        }
+    }
+
+    public static String getDbConnectionStats() {
+        return dbConnectionStats;
+    }
+
+    private static void setDbConnectionStats(String dbConnectionStats) {
+        Helper.dbConnectionStats = dbConnectionStats;
+    }
+
+    public static String getBotConnectionStats() {
+        return botConnectionStats;
+    }
+
+    private static void setBotConnectionStats(String botConnectionStats) {
+        Helper.botConnectionStats = botConnectionStats;
+    }
+
+    public static String getTwConnectionStats() {
+        return twConnectionStats;
+    }
+
+    private static void setTwConnectionStats(String twConnectionStats) {
+        Helper.twConnectionStats = twConnectionStats;
+    }
+
+    public static String getNetConnectionStats() {
+        return netConnectionStats;
+    }
+
+    private static void setNetConnectionStats(String netConnectionStats) {
+        Helper.netConnectionStats = netConnectionStats;
     }
 }

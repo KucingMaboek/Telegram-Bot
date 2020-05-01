@@ -14,30 +14,51 @@ public class Bot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
-        String message = String.valueOf(update.getMessage().getText().charAt(0));
-        if (message.equals("/")){
-            sendMessage.setText("ini perintah");
-        } else {
-            sendMessage.setText(
-                    "Selamat datang di Bot PLN, berikut layanan yang kami tawarkan untuk anda:\n" +
-                    "\n" +
-                    "Ingin melakukan instalasi dirumah/toko/perusahaan anda? mudah! cukup isi data anda dengan menggunakan perintah\n" +
-                    "/instalasi_listrik\n" +
-                    "\n" +
-                    "Listrik di rumah anda bermasalah? isi data mengenai gangguannya dengan perintah\n" +
-                    "/lapor_gangguan\n" +
-                    "\n" +
-                    "Melihat ada oknum yang sedang melakukan tindakan berupa kecurangan/mengakali listrik?? Laporkan sekarang!\n" +
-                    "/lapor_kecurangann\n" +
-                    "\n" +
-                    "Butuh konsultasi secara langsung? Ajukan permintaanmu segera! kami akan hubungi dalam waktu 1x24 jam selama jam kerja!\n" +
-                    "/live_chat"
-            );
-        }
+        MessageHandler message = new MessageHandler();
+        String chatId = String.valueOf(update.getMessage().getChatId());
+        String text = update.getMessage().getText();
+        sendMessage.setText(message.ReadMessage(chatId,text));
+        //        String message = String.valueOf(update.getMessage().getText().charAt(0));
 
-//        System.out.println(update.getMessage().getFrom().getFirstName() + ": " + update.getMessage().getText());
-//        SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
-//        sendMessage.setText("Hello " + update.getMessage().getFrom().getFirstName() + "\n" + update.getMessage().getText());
+        //Ngetes
+//        Statement statement = null;
+//        try {
+//            statement = Helper.connectDatabase().createStatement();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        long chatId = update.getMessage().getChatId();
+//        String text = update.getMessage().getText();
+//        String query = String.format("insert into tes values (\'%s\',\'%s\');", chatId, text);
+//        sendMessage.setText("Chat ID: " + chatId + "\n" + "Pesan: " + text);
+//        try {
+//            statement.executeUpdate(query);
+//            execute(sendMessage);
+//        } catch (TelegramApiException | SQLException e) {
+//            e.printStackTrace();
+//        }
+        //end of ngetes
+
+
+//        if (message.equals("/")) {
+//            sendMessage.setText("ini perintah");
+//        } else {
+//            sendMessage.setText(
+//                    "Selamat datang di Bot PLN, berikut layanan yang kami tawarkan untuk anda:\n" +
+//                            "\n" +
+//                            "Ingin melakukan instalasi dirumah/toko/perusahaan anda? mudah! cukup isi data anda dengan menggunakan perintah\n" +
+//                            "/instalasi_listrik\n" +
+//                            "\n" +
+//                            "Listrik di rumah anda bermasalah? isi data mengenai gangguannya dengan perintah\n" +
+//                            "/lapor_gangguan\n" +
+//                            "\n" +
+//                            "Melihat ada oknum yang sedang melakukan tindakan berupa kecurangan/mengakali listrik?? Laporkan sekarang!\n" +
+//                            "/lapor_kecurangann\n" +
+//                            "\n" +
+//                            "Butuh konsultasi secara langsung? Ajukan permintaanmu segera! kami akan hubungi dalam waktu 1x24 jam selama jam kerja!\n" +
+//                            "/live_chat"
+//            );
+//        }
         try {
             execute(sendMessage);
         } catch (TelegramApiException e) {
@@ -77,5 +98,4 @@ public class Bot extends TelegramLongPollingBot {
         execute(msg);
     }
 
-//    private void checkMessages()
 }

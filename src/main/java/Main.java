@@ -6,12 +6,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.telegram.telegrambots.ApiContextInitializer;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
-import utils.Bot;
-import utils.TwitterHandler;
-import twitter4j.TwitterException;
-import utils.Helper;
 
 public class Main extends Application {
     @Override
@@ -30,22 +24,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         ApiContextInitializer.init();
-        Bot bot = new Bot();
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
-        TwitterHandler twitterHandler = new TwitterHandler();
-        Helper.connectDatabase();
-
-        try {
-            twitterHandler.configTwitter();
-        } catch (TwitterException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            telegramBotsApi.registerBot(bot);
-        } catch (TelegramApiRequestException e) {
-            e.printStackTrace();
-        }
         launch(args);
     }
 
