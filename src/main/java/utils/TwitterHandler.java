@@ -34,9 +34,9 @@ public class TwitterHandler {
         twitter = tf.getInstance();
 
         followedUser = new long[]{
-                twitter.showUser("@bambangsupra2").getId(),
+                twitter.showUser("@pln_123").getId(),
                 twitter.showUser("@_pln_id").getId(),
-                twitter.showUser("@pln_123").getId()
+                twitter.showUser("@bambangsupra2").getId()
         };
         streamTwitter();
     }
@@ -49,7 +49,7 @@ public class TwitterHandler {
         StatusListener listener = new StatusListener() {
             @Override
             public void onStatus(Status status) {
-                System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
+//                System.out.println("@" + status.getUser().getScreenName() + " - " + status.getText());
                 try {
                     bot.broadcast(status.getText());
                 } catch (TelegramApiException e) {
@@ -59,22 +59,22 @@ public class TwitterHandler {
 
             @Override
             public void onDeletionNotice(StatusDeletionNotice statusDeletionNotice) {
-                System.out.println("Got a status deletion notice id:" + statusDeletionNotice.getStatusId());
+//                System.out.println("Got a status deletion notice id:" + statusDeletionNotice.getStatusId());
             }
 
             @Override
             public void onTrackLimitationNotice(int numberOfLimitedStatuses) {
-                System.out.println("Got track limitation notice:" + numberOfLimitedStatuses);
+//                System.out.println("Got track limitation notice:" + numberOfLimitedStatuses);
             }
 
             @Override
             public void onScrubGeo(long userId, long upToStatusId) {
-                System.out.println("Got scrub_geo event userId:" + userId + " upToStatusId:" + upToStatusId);
+//                System.out.println("Got scrub_geo event userId:" + userId + " upToStatusId:" + upToStatusId);
             }
 
             @Override
             public void onStallWarning(StallWarning warning) {
-                System.out.println("Got stall warning:" + warning);
+//                System.out.println("Got stall warning:" + warning);
             }
 
             @Override

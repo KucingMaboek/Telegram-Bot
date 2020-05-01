@@ -72,7 +72,7 @@ public class MessageHandler {
                     message = "lapor kecurangan";
                     query = String.format("update conversation set requestCode = \'%s\',text = \'%s\' where chatId = %s", "300", text, chatId);
                     break;
-                case "/livechat":
+                case "/live_chat":
                     message = "live chat";
                     query = String.format("update conversation set requestCode = \'%s\',text = \'%s\' where chatId = %s", "400", text, chatId);
                     break;
@@ -99,7 +99,7 @@ public class MessageHandler {
                         "/lapor_gangguan\n" +
                         "\n" +
                         "Melihat ada oknum yang sedang melakukan tindakan berupa kecurangan/mengakali listrik?? Laporkan sekarang!\n" +
-                        "/lapor_kecurangann\n" +
+                        "/lapor_kecurangan\n" +
                         "\n" +
                         "Butuh konsultasi secara langsung? Ajukan permintaanmu segera! kami akan hubungi dalam waktu 1x24 jam selama jam kerja!\n" +
                         "/live_chat";
@@ -108,4 +108,5 @@ public class MessageHandler {
         }
         return message;
     }
+
 }

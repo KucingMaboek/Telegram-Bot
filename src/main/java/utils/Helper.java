@@ -123,7 +123,6 @@ public class Helper {
             URLConnection connection = url.openConnection();
             connection.connect();
             setNetConnectionStats("Terhubung");
-            System.out.println("Connection Successful");
         } catch (Exception e) {
             e.printStackTrace();
             setNetConnectionStats("Tidak ada akses internet");
