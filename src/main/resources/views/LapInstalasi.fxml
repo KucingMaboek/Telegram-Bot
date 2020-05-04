@@ -10,8 +10,9 @@
     <TableView fx:id="tbInstalasi" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick" prefHeight="437.0" prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
         <columns>
             <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID" />
-            <TableColumn fx:id="title" prefWidth="460.0" resizable="false" text="Judul" />
-            <TableColumn fx:id="date" prefWidth="148.0" resizable="false" text="Tanggal" />
+            <TableColumn fx:id="nama" prefWidth="293.0" resizable="false" text="Nama Pemohon" />
+            <TableColumn fx:id="date" prefWidth="161.0" resizable="false" text="Tanggal" />
+         <TableColumn fx:id="status" prefWidth="154.0" resizable="false" text="Status" />
         </columns>
     </TableView>
     <TextField id="tf_search" layoutX="15.0" layoutY="23.0" prefHeight="26.0" prefWidth="247.0" promptText="Cari" />
