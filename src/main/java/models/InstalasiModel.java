@@ -1,6 +1,7 @@
 package models;
 
 public class InstalasiModel {
+
     private String chatID;
     private String title;
     private String date;
