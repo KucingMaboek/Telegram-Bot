@@ -17,33 +17,38 @@ public class Bot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
         MessageHandler message = new MessageHandler();
+        update.getMessage().getFrom().getUserName();
         String chatId = String.valueOf(update.getMessage().getChatId());
-        String text = update.getMessage().getText();
+        String text = null;
+        String username = String.valueOf(update.getMessage().getFrom().getUserName());
         String url;
-        if (update.getMessage().getPhoto() != null) {
+        if (update.getMessage().hasPhoto()) {
             String fileId = update.getMessage().getPhoto().get(0).getFileId();
             url = String.format("https://api.telegram.org/bot%s/getFile?file_id=%s", getBotToken(), fileId);
+            System.out.println(url);
             try {
                 JSONObject json = Helper.readJsonFromUrl(url);
                 json = (JSONObject) json.get("result");
                 String filePath = json.getString("file_path");
-                url = String.format("https://api.telegram.org/file/bot%s/%s", getBotToken(), filePath);
+                text = String.format("https://api.telegram.org/file/bot%s/%s", getBotToken(), filePath);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else if (update.getMessage().getVideo() != null) {
+        } else if (update.getMessage().hasVideo()) {
             String fileId = update.getMessage().getVideo().getFileId();
             url = String.format("https://api.telegram.org/bot%s/getFile?file_id=%s", getBotToken(), fileId);
             try {
                 JSONObject json = Helper.readJsonFromUrl(url);
                 json = (JSONObject) json.get("result");
                 String filePath = json.getString("file_path");
-                url = String.format("https://api.telegram.org/file/bot%s/%s", getBotToken(), filePath);
+                text = String.format("https://api.telegram.org/file/bot%s/%s", getBotToken(), filePath);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else if (update.getMessage().hasText()) {
+            text = update.getMessage().getText();
         }
-        sendMessage.setText(message.readMessage(chatId, text));
+        sendMessage.setText(message.readMessage(chatId, text, username));
 
         try {
             execute(sendMessage);

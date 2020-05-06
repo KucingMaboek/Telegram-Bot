@@ -1,154 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.MainController">
     <children>
-        <AnchorPane layoutX="269.0" layoutY="90.0" prefHeight="460.0" prefWidth="632.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="269.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+        <AnchorPane layoutX="269.0" layoutY="90.0" prefHeight="460.0" prefWidth="632.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="269.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
             <children>
-            <BorderPane fx:id="bp_MainPane" prefHeight="510.0" prefWidth="755.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <BorderPane fx:id="bp_MainPane" prefHeight="510.0" prefWidth="755.0" AnchorPane.bottomAnchor="0.0"
+                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
             </children>
         </AnchorPane>
-        <Pane id="breadcrumb" layoutX="269.0" prefHeight="90.0" prefWidth="900.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-color: #90a4ae;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane id="breadcrumb" layoutX="269.0" prefHeight="90.0" prefWidth="900.0"
+              style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-color: #90a4ae;"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="txt_BreadCrumb" layoutX="289.0" layoutY="45.0" text="/ Beranda" textAlignment="CENTER" textFill="WHITE">
+                <Label fx:id="txt_BreadCrumb" layoutX="289.0" layoutY="45.0" text="/ Beranda" textAlignment="CENTER"
+                       textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="26.0" />
+                        <Font name="Arial Bold" size="26.0"/>
                     </font>
                 </Label>
             </children>
         </Pane>
-        <VBox id="menu_container" prefHeight="556.0" prefWidth="270.0" style="-fx-background-color: #607d8b; -fx-background-radius: 0 10 0 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
+        <VBox id="menu_container" prefHeight="556.0" prefWidth="270.0"
+              style="-fx-background-color: #607d8b; -fx-background-radius: 0 10 0 0;" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="15.0">
             <children>
                 <Pane prefHeight="84.0" prefWidth="269.0">
                     <children>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="26.0" layoutY="22.0" pickOnBounds="true"
+                                   preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/icon.png" />
+                                <Image url="@../drawable/icon.png"/>
                             </image>
                         </ImageView>
                         <Label layoutX="79.0" layoutY="26.0" text="Telegram Bot" textFill="WHITE">
                             <font>
-                                <Font name="Arial Bold" size="22.0" />
+                                <Font name="Arial Bold" size="22.0"/>
                             </font>
                         </Label>
                     </children>
                     <VBox.margin>
-                        <Insets />
+                        <Insets/>
                     </VBox.margin>
                 </Pane>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btn_Beranda" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Beranda" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#btn_Beranda"
+                        prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Beranda"
+                        textFill="WHITE">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_home_white.png" />
+                                <Image url="@../drawable/ic_home_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="94.0" mnemonicParsing="false" onAction="#btn_Instalasi" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Laporan Instalasi Listrik" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="94.0" mnemonicParsing="false"
+                        onAction="#btn_Instalasi" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;"
+                        text="Laporan Instalasi Listrik" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_format_list_bulleted_white.png" />
+                                <Image url="@../drawable/ic_format_list_bulleted_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="147.0" mnemonicParsing="false" onAction="#btn_Gangguan" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Laporan Gangguan Listrik" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="147.0"
+                        mnemonicParsing="false" onAction="#btn_Gangguan" prefHeight="53.0" prefWidth="269.0"
+                        style="-fx-background-radius: 0;" text="Laporan Gangguan Listrik" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_format_list_bulleted_white.png" />
+                                <Image url="@../drawable/ic_format_list_bulleted_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="200.0" mnemonicParsing="false" onAction="#btn_Kecurangan" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Laporan Kecurangan Listrik" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="200.0"
+                        mnemonicParsing="false" onAction="#btn_Kecurangan" prefHeight="53.0" prefWidth="269.0"
+                        style="-fx-background-radius: 0;" text="Laporan Kecurangan Listrik" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_format_list_bulleted_white.png" />
+                                <Image url="@../drawable/ic_format_list_bulleted_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="253.0" mnemonicParsing="false" onAction="#btn_LiveChat" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Permintaan Live Chat" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="253.0"
+                        mnemonicParsing="false" onAction="#btn_LiveChat" prefHeight="53.0" prefWidth="269.0"
+                        style="-fx-background-radius: 0;" text="Permintaan Live Chat" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_headset_mic_white.png" />
+                                <Image url="@../drawable/ic_headset_mic_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="306.0" mnemonicParsing="false" onAction="#btn_KelolaChannel" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Kelola Channel" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="306.0"
+                        mnemonicParsing="false" onAction="#btn_KelolaChannel" prefHeight="53.0" prefWidth="269.0"
+                        style="-fx-background-radius: 0;" text="Kelola Channel" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_people_white.png" />
+                                <Image url="@../drawable/ic_people_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="359.0" mnemonicParsing="false" onAction="#btn_Pengaturan" prefHeight="53.0" prefWidth="269.0" style="-fx-background-radius: 0;" text="Pengaturan Bot" textFill="WHITE">
+                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="359.0"
+                        mnemonicParsing="false" onAction="#btn_Pengaturan" prefHeight="53.0" prefWidth="269.0"
+                        style="-fx-background-radius: 0;" text="Pengaturan Bot" textFill="WHITE">
                     <font>
-                        <Font name="Arial Bold" size="16.0" />
+                        <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_settings_white.png" />
+                                <Image url="@../drawable/ic_settings_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
             </children>

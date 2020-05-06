@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LapKecuranganController">
-    <TableView fx:id="tbKecurangan" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick" prefHeight="437.0" prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0"
+            prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.LapKecuranganController">
+    <TableView fx:id="tbKecurangan" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick" prefHeight="437.0"
+               prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
         <columns>
-            <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID" />
-            <TableColumn fx:id="title" prefWidth="460.0" resizable="false" text="Judul" />
-            <TableColumn fx:id="date" prefWidth="148.0" resizable="false" text="Tanggal" />
+            <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID"/>
+            <TableColumn fx:id="laporan" prefWidth="293.0" resizable="false" text="Laporan"/>
+            <TableColumn fx:id="date" prefWidth="161.0" resizable="false" text="Tanggal"/>
+            <TableColumn fx:id="status" prefWidth="154.0" resizable="false" text="Status"/>
         </columns>
     </TableView>
-    <TextField id="tf_search" layoutX="15.0" layoutY="23.0" prefHeight="26.0" prefWidth="247.0" promptText="Cari" />
-    <Button layoutX="277.0" layoutY="23.0" mnemonicParsing="false" text="Cari" />
+    <TextField fx:id="tf_search" layoutX="15.0" layoutY="23.0" prefHeight="26.0" prefWidth="247.0" promptText="Cari"/>
+    <Button layoutX="277.0" layoutY="23.0" mnemonicParsing="false" text="Cari"/>
 </AnchorPane>

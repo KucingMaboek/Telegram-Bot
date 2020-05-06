@@ -2,13 +2,10 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import utils.Helper;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -60,14 +57,6 @@ public class MainController {
     void btn_Pengaturan(ActionEvent event) {
         Helper.moveToCenter(getClass().getResource("../views/" + "PengaturanBot" + ".fxml"), bp_MainPane);
         txt_BreadCrumb.setText("/ Pengaturan Bot");
-    }
-
-    public void openSubPage(MouseEvent mouseEvent) {
-        try {
-            bp_MainPane.setCenter(FXMLLoader.load(getClass().getResource("../views/" + "PengaturanBot" + ".fxml")));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
