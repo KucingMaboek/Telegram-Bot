@@ -59,7 +59,6 @@ public class PermintaanLiveController implements Initializable {
             e.printStackTrace();
         }
         FilteredList<PermintaanLiveModel> filteredData = new FilteredList<>(PermintaanLiveModels, p -> true);
-        System.out.println(tbPermintaanLive.getColumns().contains("Belum"));
         tf_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(permintaanLiveModel -> {
                 String lowerCaseFilter = newValue.toLowerCase();

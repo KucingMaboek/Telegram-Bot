@@ -54,12 +54,6 @@ public class MainController {
     }
 
     @FXML
-    void btn_Pengaturan(ActionEvent event) {
-        Helper.moveToCenter(getClass().getResource("../views/" + "PengaturanBot" + ".fxml"), bp_MainPane);
-        txt_BreadCrumb.setText("/ Pengaturan Bot");
-    }
-
-    @FXML
     public void initialize() {
         Helper.moveToCenter(getClass().getResource("../views/" + "Beranda" + ".fxml"), bp_MainPane);
         txt_BreadCrumb.setText("/ Beranda");

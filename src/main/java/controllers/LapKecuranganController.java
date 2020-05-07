@@ -65,7 +65,6 @@ public class LapKecuranganController implements Initializable {
             e.printStackTrace();
         }
         FilteredList<KecuranganModel> filteredData = new FilteredList<>(KecuranganModels, p -> true);
-        System.out.println(tbKecurangan.getColumns().contains("Belum"));
         tf_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(kecuranganModel -> {
                 //Apabila field search tidak terisi, tampilkan seluruh data

@@ -65,7 +65,6 @@ public class LapGangguanController implements Initializable {
             e.printStackTrace();
         }
         FilteredList<GangguanModel> filteredData = new FilteredList<>(GangguanModels, p -> true);
-        System.out.println(tbGangguan.getColumns().contains("Belum"));
         tf_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(kangguanModel -> {
                 String lowerCaseFilter = newValue.toLowerCase();

@@ -137,31 +137,15 @@
                 </Button>
                 <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="306.0"
                         mnemonicParsing="false" onAction="#btn_KelolaChannel" prefHeight="53.0" prefWidth="269.0"
-                        style="-fx-background-radius: 0;" text="Kelola Channel" textFill="WHITE">
+                        style="-fx-background-radius: 0; -fx-background-color: red;" text="Kelola Channel"
+                        textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="16.0"/>
                     </font>
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/ic_people_white.png"/>
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-                <Button id="btn_sideNav" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="359.0"
-                        mnemonicParsing="false" onAction="#btn_Pengaturan" prefHeight="53.0" prefWidth="269.0"
-                        style="-fx-background-radius: 0;" text="Pengaturan Bot" textFill="WHITE">
-                    <font>
-                        <Font name="Arial Bold" size="16.0"/>
-                    </font>
-                    <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../drawable/ic_settings_white.png"/>
+                                <Image url="@../drawable/ic_broadcast_white.png"/>
                             </image>
                         </ImageView>
                     </graphic>

@@ -67,7 +67,6 @@ public class LapInstalasiController implements Initializable {
             e.printStackTrace();
         }
         FilteredList<InstalasiModel> filteredData = new FilteredList<>(InstalasiModels, p -> true);
-        System.out.println(tbInstalasi.getColumns().contains("Belum"));
         tf_search.textProperty().addListener((observable, oldValue, newValue) -> {
             filteredData.setPredicate(instalasiModel -> {
                 String lowerCaseFilter = newValue.toLowerCase();
