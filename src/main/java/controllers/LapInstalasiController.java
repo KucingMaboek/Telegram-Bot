@@ -4,13 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import models.InstalasiModel;
 import utils.Helper;
 
@@ -21,13 +24,13 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class LapInstalasiController implements Initializable {
-
-    @FXML
-    public TextField tf_search;
-    @FXML
-    private TableView<InstalasiModel> tbInstalasi;
-    @FXML
-    public TableColumn<InstalasiModel, String> chatID, nama, date, status;
+    private ObservableList<InstalasiModel> InstalasiModels = FXCollections.observableArrayList();
+    private ObservableList<String> statusOption =
+            FXCollections.observableArrayList(
+                    "Belum di Proses",
+                    "Sedang di Proses",
+                    "Telah di Proses"
+            );
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -84,17 +87,56 @@ public class LapInstalasiController implements Initializable {
         SortedList<InstalasiModel> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tbInstalasi.comparatorProperty());
         tbInstalasi.setItems(sortedData);
-    }
 
-    private ObservableList<InstalasiModel> InstalasiModels = FXCollections.observableArrayList();
+        cb_status.getItems().addAll(statusOption);
+    }
 
     public void cell_onClick(MouseEvent mouseEvent) {
         if (mouseEvent.getClickCount() == 2) //Checking double click
         {
-            System.out.println(tbInstalasi.getSelectionModel().getSelectedItem().getChatId());
-            System.out.println(tbInstalasi.getSelectionModel().getSelectedItem().getNama());
-            System.out.println(tbInstalasi.getSelectionModel().getSelectedItem().getDate());
-            System.out.println(tbInstalasi.getSelectionModel().getSelectedItem().getStatus());
+            tf_id.setText(String.valueOf(tbInstalasi.getSelectionModel().getSelectedItem().getId()));
+            tf_chatId.setText(tbInstalasi.getSelectionModel().getSelectedItem().getChatId());
+            tf_date.setText(tbInstalasi.getSelectionModel().getSelectedItem().getDate());
+            tf_nama.setText(String.valueOf(tbInstalasi.getSelectionModel().getSelectedItem().getNama()));
+            tf_provinsi.setText(tbInstalasi.getSelectionModel().getSelectedItem().getProvinsi());
+            tf_kota.setText(tbInstalasi.getSelectionModel().getSelectedItem().getKota());
+            tf_kecamatan.setText(tbInstalasi.getSelectionModel().getSelectedItem().getKecamatan());
+            tf_kelurahan.setText(tbInstalasi.getSelectionModel().getSelectedItem().getKelurahan());
+            tf_alamat.setText(tbInstalasi.getSelectionModel().getSelectedItem().getAlamat());
+            tf_nomorTelepon.setText(tbInstalasi.getSelectionModel().getSelectedItem().getNomorTelepon());
+            tf_email.setText(tbInstalasi.getSelectionModel().getSelectedItem().getEmail());
+            tf_nik.setText(tbInstalasi.getSelectionModel().getSelectedItem().getNik());
+            tf_npwp.setText(tbInstalasi.getSelectionModel().getSelectedItem().getNpwp());
+            tf_layanan.setText(tbInstalasi.getSelectionModel().getSelectedItem().getLayanan());
+            tf_peruntukan.setText(tbInstalasi.getSelectionModel().getSelectedItem().getPeruntukan());
+            tf_daya.setText(tbInstalasi.getSelectionModel().getSelectedItem().getDaya());
+            tf_tokenPerdana.setText(tbInstalasi.getSelectionModel().getSelectedItem().getTokenPerdana());
+            cb_status.setValue(tbInstalasi.getSelectionModel().getSelectedItem().getStatus());
+            pnl_detail.toFront();
         }
     }
+
+    @FXML
+    void btn_back(ActionEvent event) {
+        pnl_list.toFront();
+    }
+
+    @FXML
+    void btn_save(ActionEvent event) {
+        cb_status.setValue("fil");
+    }
+
+    //FXML Variables
+    @FXML
+    private TextField tf_nama, tf_provinsi, tf_kota, tf_kecamatan, tf_kelurahan, tf_alamat, tf_nomorTelepon, tf_email, tf_nik, tf_npwp, tf_layanan, tf_peruntukan, tf_daya, tf_tokenPerdana, tf_id, tf_chatId, tf_date;
+    @FXML
+    private ChoiceBox<String> cb_status;
+    @FXML
+    private AnchorPane pnl_list, pnl_detail;
+    @FXML
+    public TextField tf_search;
+    @FXML
+    private TableView<InstalasiModel> tbInstalasi;
+    @FXML
+    public TableColumn<InstalasiModel, String> chatID, nama, date, status;
 }
