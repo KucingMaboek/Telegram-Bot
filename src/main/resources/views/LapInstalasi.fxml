@@ -6,25 +6,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0"
             prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controllers.LapInstalasiController">
-    <AnchorPane fx:id="pnl_list" prefHeight="510.0" prefWidth="755.0" style="-fx-background-color: #eceff1;"
-                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                AnchorPane.topAnchor="0.0">
-        <children>
-            <TableView fx:id="tbInstalasi" editable="true" onMouseClicked="#cell_onClick" prefHeight="437.0"
-                       prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
-                       AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
-                <columns>
-                    <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID"/>
-                    <TableColumn fx:id="nama" prefWidth="293.0" resizable="false" text="Nama Pemohon"/>
-                    <TableColumn fx:id="date" prefWidth="161.0" resizable="false" text="Tanggal"/>
-                    <TableColumn fx:id="status" prefWidth="154.0" resizable="false" text="Status"/>
-                </columns>
-            </TableView>
-            <TextField fx:id="tf_search" prefHeight="26.0" prefWidth="247.0" promptText="Cari"
-                       AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="23.0"/>
-            <Button mnemonicParsing="false" text="Cari" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="23.0"/>
-        </children>
-    </AnchorPane>
     <AnchorPane fx:id="pnl_detail" prefHeight="510.0" prefWidth="755.0" style="-fx-background-color: #eceff1;"
                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                 AnchorPane.topAnchor="0.0">
@@ -210,12 +191,31 @@
                             <Font size="25.0"/>
                         </font>
                     </Text>
-                    <Button layoutX="266.0" layoutY="194.0" mnemonicParsing="false" onAction="#btn_save"
-                            prefHeight="30.0" prefWidth="83.0"
+                    <Button fx:id="btn_saveId" layoutX="266.0" layoutY="194.0" mnemonicParsing="false"
+                            onAction="#btn_save" prefHeight="30.0" prefWidth="83.0"
                             style="-fx-background-radius: 0; -fx-background-color: grey;" text="Simpan"
                             AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
                 </children>
             </AnchorPane>
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="pnl_list" prefHeight="510.0" prefWidth="755.0" style="-fx-background-color: #eceff1;"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0">
+        <children>
+            <TableView fx:id="tbInstalasi" editable="true" onMouseClicked="#cell_onClick" prefHeight="437.0"
+                       prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+                       AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
+                <columns>
+                    <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID"/>
+                    <TableColumn fx:id="nama" prefWidth="293.0" resizable="false" text="Nama Pemohon"/>
+                    <TableColumn fx:id="date" prefWidth="161.0" resizable="false" text="Tanggal"/>
+                    <TableColumn fx:id="status" prefWidth="154.0" resizable="false" text="Status"/>
+                </columns>
+            </TableView>
+            <TextField fx:id="tf_search" prefHeight="26.0" prefWidth="247.0" promptText="Cari"
+                       AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="23.0"/>
+            <Button mnemonicParsing="false" text="Cari" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="23.0"/>
         </children>
     </AnchorPane>
 </AnchorPane>

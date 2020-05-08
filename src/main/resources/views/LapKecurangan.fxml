@@ -1,20 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0"
             prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controllers.LapKecuranganController">
-    <TableView fx:id="tbKecurangan" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick" prefHeight="437.0"
-               prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
-               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
-        <columns>
-            <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID"/>
-            <TableColumn fx:id="laporan" prefWidth="293.0" resizable="false" text="Laporan"/>
-            <TableColumn fx:id="date" prefWidth="161.0" resizable="false" text="Tanggal"/>
-            <TableColumn fx:id="status" prefWidth="154.0" resizable="false" text="Status"/>
-        </columns>
-    </TableView>
-    <TextField fx:id="tf_search" layoutX="15.0" layoutY="23.0" prefHeight="26.0" prefWidth="247.0" promptText="Cari"/>
-    <Button layoutX="277.0" layoutY="23.0" mnemonicParsing="false" text="Cari"/>
+    <AnchorPane fx:id="pnl_detail" prefHeight="510.0" prefWidth="755.0" style="-fx-background-color: #eceff1;"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0">
+        <children>
+            <Button layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_back" prefHeight="30.0"
+                    prefWidth="83.0" style="-fx-background-radius: 0; -fx-background-color: grey;" text="Kembali"
+                    AnchorPane.topAnchor="15.0"/>
+            <AnchorPane prefHeight="277.0" prefWidth="355.0" style="-fx-background-color: white;"
+                        AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                <children>
+                    <Text layoutX="13.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Diri"
+                          textAlignment="JUSTIFY" wrappingWidth="326.1181640625" AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="0.0">
+                        <font>
+                            <Font size="25.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nama"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="44.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provinsi"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="74.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kabupaten/Kota"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="104.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kecamatan"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="134.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kelurahan"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="164.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alamat"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="194.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nomor Telepon"
+                          textAlignment="JUSTIFY" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="224.05078125">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <TextField fx:id="tf_nama" editable="false" layoutX="70.0" layoutY="41.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0"/>
+                    <TextField fx:id="tf_provinsi" editable="false" layoutX="191.0" layoutY="70.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="70.0"/>
+                    <TextField fx:id="tf_kota" editable="false" layoutX="191.0" layoutY="95.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0"/>
+                    <TextField fx:id="tf_kecamatan" editable="false" layoutX="191.0" layoutY="120.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="130.0"/>
+                    <TextField fx:id="tf_kelurahan" editable="false" layoutX="191.0" layoutY="145.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="160.0"/>
+                    <TextField fx:id="tf_alamat" editable="false" layoutX="191.0" layoutY="170.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="190.0"/>
+                    <TextField fx:id="tf_nomorTelepon" editable="false" layoutX="191.0" layoutY="286.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="220.0"/>
+                </children>
+            </AnchorPane>
+            <AnchorPane layoutX="386.0" layoutY="264.0" prefHeight="232.0" prefWidth="355.0"
+                        style="-fx-background-color: white;" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="60.0">
+                <children>
+                    <ChoiceBox fx:id="cb_status" layoutX="191.0" layoutY="130.0" prefWidth="150.0"
+                               style="-fx-background-color: white;"/>
+                    <Text layoutX="14.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID"
+                          AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="42.0">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chat ID"
+                          AnchorPane.leftAnchor="15.0">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                          text="Tanggal Permintaan" AnchorPane.leftAnchor="15.0">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <Text layoutX="14.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status"
+                          AnchorPane.leftAnchor="15.0">
+                        <font>
+                            <Font size="15.0"/>
+                        </font>
+                    </Text>
+                    <TextField fx:id="tf_id" editable="false" layoutX="119.0" layoutY="34.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="40.0"/>
+                    <TextField fx:id="tf_chatId" editable="false" layoutX="191.0" layoutY="80.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="70.0"/>
+                    <TextField fx:id="tf_date" editable="false" layoutX="201.0" layoutY="80.0"
+                               AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0"/>
+                    <Text layoutX="-121.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data"
+                          textAlignment="JUSTIFY" wrappingWidth="326.1181640625" AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="0.0">
+                        <font>
+                            <Font size="25.0"/>
+                        </font>
+                    </Text>
+                    <Button fx:id="btn_saveId" layoutX="266.0" layoutY="194.0" mnemonicParsing="false"
+                            onAction="#btn_save" prefHeight="30.0" prefWidth="83.0"
+                            style="-fx-background-radius: 0; -fx-background-color: grey;" text="Simpan"
+                            AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0"/>
+                </children>
+            </AnchorPane>
+            <AnchorPane layoutX="56.0" layoutY="304.0" prefHeight="188.0" prefWidth="725.0"
+                        style="-fx-background-color: white;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+                        AnchorPane.rightAnchor="15.0">
+                <children>
+                    <TextArea fx:id="ta_keterangan" editable="false" layoutX="200.0" layoutY="33.0" prefHeight="150.0"
+                              prefWidth="511.0" wrapText="true" AnchorPane.bottomAnchor="5.0"
+                              AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="33.0"/>
+                    <ImageView fx:id="iv_media" fitHeight="150.0" fitWidth="150.0" layoutX="14.0" layoutY="33.0"
+                               pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0"
+                               AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="33.0">
+                        <image>
+                            <Image url="@../drawable/default.png"/>
+                        </image>
+                    </ImageView>
+                    <Text layoutX="-137.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Keterangan"
+                          textAlignment="JUSTIFY" wrappingWidth="326.1181640625" AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="0.0">
+                        <font>
+                            <Font size="25.0"/>
+                        </font>
+                    </Text>
+                </children>
+            </AnchorPane>
+        </children>
+    </AnchorPane>
+    <AnchorPane fx:id="pnl_list" prefHeight="510.0" prefWidth="755.0" style="-fx-background-color: #eceff1;"
+                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                AnchorPane.topAnchor="0.0">
+        <children>
+            <TableView fx:id="tbKecurangan" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick"
+                       prefHeight="437.0"
+                       prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
+                       AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
+                <columns>
+                    <TableColumn fx:id="chatID" prefWidth="116.0" resizable="false" text="ChatID"/>
+                    <TableColumn fx:id="laporan" prefWidth="293.0" resizable="false" text="Laporan"/>
+                    <TableColumn fx:id="date" prefWidth="161.0" resizable="false" text="Tanggal"/>
+                    <TableColumn fx:id="status" prefWidth="154.0" resizable="false" text="Status"/>
+                </columns>
+            </TableView>
+            <TextField fx:id="tf_search" prefHeight="26.0" prefWidth="247.0" promptText="Cari"
+                       AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="23.0"/>
+            <Button mnemonicParsing="false" text="Cari" AnchorPane.leftAnchor="277.0" AnchorPane.topAnchor="23.0"/>
+        </children>
+    </AnchorPane>
 </AnchorPane>

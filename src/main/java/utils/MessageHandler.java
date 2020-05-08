@@ -6,15 +6,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MessageHandler {
+    Query query = new Query();
     public String readMessage(String chatId, String text, String username) {
 
         String message;
 
         //check id akun apakah sudah terdaftar pada database atau belum
-        checkChatId(chatId, text, username);
+        query.checkChatId(chatId, text, username);
 
         //Menyimpan kode request
-        String requestCode = getRequestCode(chatId);
+        String requestCode = query.getRequestCode(chatId);
 
         //Check pesan apakah perintah atau bukan
         String check = String.valueOf(text.charAt(0));
@@ -23,13 +24,13 @@ public class MessageHandler {
             //Jika ya, hapus registrasi terakhir yang belum selesai.
             int cd = Integer.parseInt(requestCode);
             if (cd >= 100 && cd < 200) {
-                cancelInsert("instalasi_listrik", chatId);
+                query.cancelInsert("instalasi_listrik", chatId);
             } else if (cd >= 200 && cd < 300) {
-                cancelInsert("laporan_gangguan", chatId);
+                query.cancelInsert("laporan_gangguan", chatId);
             } else if (cd >= 300 && cd < 400) {
-                cancelInsert("laporan_kecurangan", chatId);
+                query.cancelInsert("laporan_kecurangan", chatId);
             } else if (cd >= 400 && cd < 500) {
-                cancelInsert("permintaan_livechat", chatId);
+                query.cancelInsert("permintaan_livechat", chatId);
             }
 
             //Mengecek perintah yang diberikan
@@ -37,31 +38,31 @@ public class MessageHandler {
                 case "/help":
                 case "/start":
                     message = cmd_000;
-                    updateConversation("000", chatId, text);
+                    query.updateConversation("000", chatId, text);
                     break;
                 case "/instalasi_listrik":
                     message = cmd_100;
-                    updateConversation("100", chatId, text);
-                    insertData("instalasi_listrik", chatId);
+                    query.updateConversation("100", chatId, text);
+                    query.insertData("instalasi_listrik", chatId);
                     break;
                 case "/lapor_gangguan":
                     message = cmd_200;
-                    updateConversation("200", chatId, text);
-                    insertData("laporan_gangguan", chatId);
+                    query.updateConversation("200", chatId, text);
+                    query.insertData("laporan_gangguan", chatId);
                     break;
                 case "/lapor_kecurangan":
                     message = cmd_300;
-                    updateConversation("300", chatId, text);
-                    insertData("laporan_kecurangan", chatId);
+                    query.updateConversation("300", chatId, text);
+                    query.insertData("laporan_kecurangan", chatId);
                     break;
                 case "/live_chat":
                     message = cmd_400;
-                    updateConversation("400", chatId, text);
-                    insertData("permintaan_livechat", chatId);
+                    query.updateConversation("400", chatId, text);
+                    query.insertData("permintaan_livechat", chatId);
                     break;
                 default:
                     message = "Perintah tidak ditemukan, gunakan /help untuk melihat daftar perintah";
-                    updateConversation("000", chatId, text);
+                    query.updateConversation("000", chatId, text);
             }
         } else {
             switch (requestCode) {
@@ -69,135 +70,135 @@ public class MessageHandler {
                     message = cmd_000;
                     break;
                 case "100":
-                    updateConversation("101", chatId, text);
-                    updateData("instalasi_listrik", "nama", chatId, text);
+                    query.updateConversation("101", chatId, text);
+                    query.updateData("instalasi_listrik", "nama", chatId, text);
                     message = cmd_101;
                     break;
                 case "101":
-                    updateConversation("102", chatId, text);
-                    updateData("instalasi_listrik", "provinsi", chatId, text);
+                    query.updateConversation("102", chatId, text);
+                    query.updateData("instalasi_listrik", "provinsi", chatId, text);
                     message = cmd_102;
                     break;
                 case "102":
-                    updateConversation("103", chatId, text);
-                    updateData("instalasi_listrik", "kota", chatId, text);
+                    query.updateConversation("103", chatId, text);
+                    query.updateData("instalasi_listrik", "kota", chatId, text);
                     message = cmd_103;
                     break;
                 case "103":
-                    updateConversation("104", chatId, text);
-                    updateData("instalasi_listrik", "kecamatan", chatId, text);
+                    query.updateConversation("104", chatId, text);
+                    query.updateData("instalasi_listrik", "kecamatan", chatId, text);
                     message = cmd_104;
                     break;
                 case "104":
-                    updateConversation("105", chatId, text);
-                    updateData("instalasi_listrik", "kelurahan", chatId, text);
+                    query.updateConversation("105", chatId, text);
+                    query.updateData("instalasi_listrik", "kelurahan", chatId, text);
                     message = cmd_105;
                     break;
                 case "105":
-                    updateConversation("106", chatId, text);
-                    updateData("instalasi_listrik", "alamat", chatId, text);
+                    query.updateConversation("106", chatId, text);
+                    query.updateData("instalasi_listrik", "alamat", chatId, text);
                     message = cmd_106;
                     break;
                 case "106":
-                    updateConversation("107", chatId, text);
-                    updateData("instalasi_listrik", "nomorTelepon", chatId, text);
+                    query.updateConversation("107", chatId, text);
+                    query.updateData("instalasi_listrik", "nomorTelepon", chatId, text);
                     message = cmd_107;
                     break;
                 case "107":
-                    updateConversation("108", chatId, text);
-                    updateData("instalasi_listrik", "email", chatId, text);
+                    query.updateConversation("108", chatId, text);
+                    query.updateData("instalasi_listrik", "email", chatId, text);
                     message = cmd_108;
                     break;
                 case "108":
-                    updateConversation("109", chatId, text);
-                    updateData("instalasi_listrik", "nik", chatId, text);
+                    query.updateConversation("109", chatId, text);
+                    query.updateData("instalasi_listrik", "nik", chatId, text);
                     message = cmd_109;
                     break;
                 case "109":
-                    updateConversation("110", chatId, text);
-                    updateData("instalasi_listrik", "npwp", chatId, text);
+                    query.updateConversation("110", chatId, text);
+                    query.updateData("instalasi_listrik", "npwp", chatId, text);
                     message = cmd_110;
                     break;
                 case "110":
-                    updateConversation("111", chatId, text);
-                    updateData("instalasi_listrik", "layanan", chatId, text);
+                    query.updateConversation("111", chatId, text);
+                    query.updateData("instalasi_listrik", "layanan", chatId, text);
                     message = cmd_111;
                     break;
                 case "111":
-                    updateConversation("112", chatId, text);
-                    updateData("instalasi_listrik", "peruntukan", chatId, text);
+                    query.updateConversation("112", chatId, text);
+                    query.updateData("instalasi_listrik", "peruntukan", chatId, text);
                     message = cmd_112;
                     break;
                 case "112":
-                    updateConversation("113", chatId, text);
-                    updateData("instalasi_listrik", "daya", chatId, text);
+                    query.updateConversation("113", chatId, text);
+                    query.updateData("instalasi_listrik", "daya", chatId, text);
                     message = cmd_113;
                     break;
                 case "113":
-                    updateConversation("114", chatId, text);
-                    updateData("instalasi_listrik", "tokenPerdana", chatId, text);
+                    query.updateConversation("114", chatId, text);
+                    query.updateData("instalasi_listrik", "tokenPerdana", chatId, text);
                     message = cmd_114(chatId);
                     break;
                 case "114":
                     if (text.equalsIgnoreCase("YA")) {
-                        updateConversation("000", chatId, text);
-                        setCurrentDate("instalasi_listrik", chatId);
-                        updateData("instalasi_listrik", "status", chatId, "Belum di Proses");
+                        query.updateConversation("000", chatId, text);
+                        query.setCurrentDate("instalasi_listrik", chatId);
+                        query.updateData("instalasi_listrik", "status", chatId, "Belum di Proses");
                         message = cmd_115a;
                     } else if (text.equalsIgnoreCase("TIDAK")) {
-                        updateConversation("000", chatId, text);
-                        cancelInsert("instalasi_listrik", chatId);
+                        query.updateConversation("000", chatId, text);
+                        query.cancelInsert("instalasi_listrik", chatId);
                         message = cmd_115b;
                     } else {
                         message = cmd_999;
                     }
                     break;
                 case "200":
-                    updateConversation("201", chatId, text);
-                    updateData("laporan_gangguan", "nama", chatId, text);
+                    query.updateConversation("201", chatId, text);
+                    query.updateData("laporan_gangguan", "nama", chatId, text);
                     message = cmd_201;
                     break;
                 case "201":
-                    updateConversation("202", chatId, text);
-                    updateData("laporan_gangguan", "provinsi", chatId, text);
+                    query.updateConversation("202", chatId, text);
+                    query.updateData("laporan_gangguan", "provinsi", chatId, text);
                     message = cmd_202;
                     break;
                 case "202":
-                    updateConversation("203", chatId, text);
-                    updateData("laporan_gangguan", "kota", chatId, text);
+                    query.updateConversation("203", chatId, text);
+                    query.updateData("laporan_gangguan", "kota", chatId, text);
                     message = cmd_203;
                     break;
                 case "203":
-                    updateConversation("204", chatId, text);
-                    updateData("laporan_gangguan", "kecamatan", chatId, text);
+                    query.updateConversation("204", chatId, text);
+                    query.updateData("laporan_gangguan", "kecamatan", chatId, text);
                     message = cmd_204;
                     break;
                 case "204":
-                    updateConversation("205", chatId, text);
-                    updateData("laporan_gangguan", "kelurahan", chatId, text);
+                    query.updateConversation("205", chatId, text);
+                    query.updateData("laporan_gangguan", "kelurahan", chatId, text);
                     message = cmd_205;
                     break;
                 case "205":
-                    updateConversation("206", chatId, text);
-                    updateData("laporan_gangguan", "alamat", chatId, text);
+                    query.updateConversation("206", chatId, text);
+                    query.updateData("laporan_gangguan", "alamat", chatId, text);
                     message = cmd_206;
                     break;
                 case "206":
-                    updateConversation("207", chatId, text);
-                    updateData("laporan_gangguan", "nomorTelepon", chatId, text);
+                    query.updateConversation("207", chatId, text);
+                    query.updateData("laporan_gangguan", "nomorTelepon", chatId, text);
                     message = cmd_207;
                     break;
                 case "207":
-                    updateConversation("208", chatId, text);
-                    updateData("laporan_gangguan", "keterangan", chatId, text);
+                    query.updateConversation("208", chatId, text);
+                    query.updateData("laporan_gangguan", "keterangan", chatId, text);
                     message = cmd_208;
                     break;
                 case "208":
                     if (text.equalsIgnoreCase("YA")) {
-                        updateConversation("209", chatId, text);
+                        query.updateConversation("209", chatId, text);
                         message = cmd_209;
                     } else if (text.equalsIgnoreCase("TIDAK")) {
-                        updateConversation("210", chatId, text);
+                        query.updateConversation("210", chatId, text);
                         message = cmd_210(chatId);
                     } else {
                         message = cmd_999;
@@ -205,8 +206,8 @@ public class MessageHandler {
                     break;
                 case "209":
                     if (text.contains("https://api.telegram.org/file/bot")) {
-                        updateConversation("210", chatId, text);
-                        updateData("laporan_gangguan", "media", chatId, text);
+                        query.updateConversation("210", chatId, text);
+                        query.updateData("laporan_gangguan", "media", chatId, text);
                         message = cmd_210(chatId);
                     } else {
                         message = cmd_999;
@@ -214,64 +215,64 @@ public class MessageHandler {
                     break;
                 case "210":
                     if (text.equalsIgnoreCase("YA")) {
-                        updateConversation("000", chatId, text);
-                        setCurrentDate("laporan_gangguan", chatId);
-                        updateData("laporan_gangguan", "status", chatId, "Belum di Proses");
+                        query.updateConversation("000", chatId, text);
+                        query.setCurrentDate("laporan_gangguan", chatId);
+                        query.updateData("laporan_gangguan", "status", chatId, "Belum di Proses");
                         message = cmd_211a;
                     } else if (text.equalsIgnoreCase("TIDAK")) {
-                        updateConversation("000", chatId, text);
-                        cancelInsert("laporan_gangguan", chatId);
+                        query.updateConversation("000", chatId, text);
+                        query.cancelInsert("laporan_gangguan", chatId);
                         message = cmd_211b;
                     } else {
                         message = cmd_999;
                     }
                     break;
                 case "300":
-                    updateConversation("301", chatId, text);
-                    updateData("laporan_kecurangan", "nama", chatId, text);
+                    query.updateConversation("301", chatId, text);
+                    query.updateData("laporan_kecurangan", "nama", chatId, text);
                     message = cmd_301;
                     break;
                 case "301":
-                    updateConversation("302", chatId, text);
-                    updateData("laporan_kecurangan", "provinsi", chatId, text);
+                    query.updateConversation("302", chatId, text);
+                    query.updateData("laporan_kecurangan", "provinsi", chatId, text);
                     message = cmd_302;
                     break;
                 case "302":
-                    updateConversation("303", chatId, text);
-                    updateData("laporan_kecurangan", "kota", chatId, text);
+                    query.updateConversation("303", chatId, text);
+                    query.updateData("laporan_kecurangan", "kota", chatId, text);
                     message = cmd_303;
                     break;
                 case "303":
-                    updateConversation("304", chatId, text);
-                    updateData("laporan_kecurangan", "kecamatan", chatId, text);
+                    query.updateConversation("304", chatId, text);
+                    query.updateData("laporan_kecurangan", "kecamatan", chatId, text);
                     message = cmd_304;
                     break;
                 case "304":
-                    updateConversation("305", chatId, text);
-                    updateData("laporan_kecurangan", "kelurahan", chatId, text);
+                    query.updateConversation("305", chatId, text);
+                    query.updateData("laporan_kecurangan", "kelurahan", chatId, text);
                     message = cmd_305;
                     break;
                 case "305":
-                    updateConversation("306", chatId, text);
-                    updateData("laporan_kecurangan", "alamat", chatId, text);
+                    query.updateConversation("306", chatId, text);
+                    query.updateData("laporan_kecurangan", "alamat", chatId, text);
                     message = cmd_306;
                     break;
                 case "306":
-                    updateConversation("307", chatId, text);
-                    updateData("laporan_kecurangan", "nomorTelepon", chatId, text);
+                    query.updateConversation("307", chatId, text);
+                    query.updateData("laporan_kecurangan", "nomorTelepon", chatId, text);
                     message = cmd_307;
                     break;
                 case "307":
-                    updateConversation("308", chatId, text);
-                    updateData("laporan_kecurangan", "keterangan", chatId, text);
+                    query.updateConversation("308", chatId, text);
+                    query.updateData("laporan_kecurangan", "keterangan", chatId, text);
                     message = cmd_308;
                     break;
                 case "308":
                     if (text.equalsIgnoreCase("YA")) {
-                        updateConversation("309", chatId, text);
+                        query.updateConversation("309", chatId, text);
                         message = cmd_309;
                     } else if (text.equalsIgnoreCase("TIDAK")) {
-                        updateConversation("310", chatId, text);
+                        query.updateConversation("310", chatId, text);
                         message = cmd_310(chatId);
                     } else {
                         message = cmd_999;
@@ -279,8 +280,8 @@ public class MessageHandler {
                     break;
                 case "309":
                     if (text.contains("https://api.telegram.org/file/bot")) {
-                        updateConversation("310", chatId, text);
-                        updateData("laporan_kecurangan", "media", chatId, text);
+                        query.updateConversation("310", chatId, text);
+                        query.updateData("laporan_kecurangan", "media", chatId, text);
                         message = cmd_310(chatId);
                     } else {
                         message = cmd_999;
@@ -288,13 +289,13 @@ public class MessageHandler {
                     break;
                 case "310":
                     if (text.equalsIgnoreCase("YA")) {
-                        updateConversation("000", chatId, text);
-                        setCurrentDate("laporan_kecurangan", chatId);
-                        updateData("laporan_kecurangan", "status", chatId, "Belum di Proses");
+                        query.updateConversation("000", chatId, text);
+                        query.setCurrentDate("laporan_kecurangan", chatId);
+                        query.updateData("laporan_kecurangan", "status", chatId, "Belum di Proses");
                         message = cmd_311a;
                     } else if (text.equalsIgnoreCase("TIDAK")) {
-                        updateConversation("000", chatId, text);
-                        cancelInsert("laporan_kecurangan", chatId);
+                        query.updateConversation("000", chatId, text);
+                        query.cancelInsert("laporan_kecurangan", chatId);
                         message = cmd_311b;
                     } else {
                         message = cmd_999;
@@ -302,15 +303,15 @@ public class MessageHandler {
                     break;
                 case "400":
                     if (text.equalsIgnoreCase("YA")) {
-                        updateConversation("000", chatId, text);
-                        setCurrentDate("permintaan_livechat", chatId);
-                        setCurrentTime("permintaan_livechat", chatId);
-                        updateData("permintaan_livechat", "username", chatId, "https://t.me/" + username);
-                        updateData("permintaan_livechat", "status", chatId, "Belum di Proses");
+                        query.updateConversation("000", chatId, text);
+                        query.setCurrentDate("permintaan_livechat", chatId);
+                        query.setCurrentTime("permintaan_livechat", chatId);
+                        query.updateData("permintaan_livechat", "username", chatId, "https://t.me/" + username);
+                        query.updateData("permintaan_livechat", "status", chatId, "Belum di Proses");
                         message = cmd_401a;
                     } else if (text.equalsIgnoreCase("TIDAK")) {
-                        updateConversation("000", chatId, text);
-                        cancelInsert("permintaan_livechat", chatId);
+                        query.updateConversation("000", chatId, text);
+                        query.cancelInsert("permintaan_livechat", chatId);
                         message = cmd_401b;
                     } else {
                         message = cmd_999;
@@ -322,92 +323,6 @@ public class MessageHandler {
             }
         }
         return message;
-    }
-
-    //Query
-    private void checkChatId(String chatId, String text, String username) {
-        String query = String.format("INSERT INTO conversation (chatId, username, requestCode, text)\n" +
-                "SELECT * FROM (SELECT \'%s\', \'%s\', '000', \'%s\') AS tmp\n" +
-                "WHERE NOT EXISTS (\n" +
-                "    SELECT chatId FROM conversation WHERE chatId = \'%s\'\n" +
-                ") LIMIT 1;", chatId, username, text, chatId);
-        String queryUpdate = String.format("update conversation set username = \'%s\' where chatId = \'%s\'", username, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement();) {
-            stats.executeUpdate(query);
-            stats.executeUpdate(queryUpdate);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private String getRequestCode(String chatId) {
-        String query = String.format("select * from conversation WHERE chatId = \'%s\'\n;", chatId);
-        String requestCode = null;
-        try {
-            Statement stats = Helper.connectDatabase().createStatement();
-            ResultSet rs = stats.executeQuery(query);
-            while (rs.next()) {
-                requestCode = rs.getString("requestCode");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return requestCode;
-    }
-
-    private void updateConversation(String requestCode, String chatId, String text) {
-        String query = String.format("update conversation set requestCode = \'%s\',text = \'%s\' where chatId = %s", requestCode, text, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement()) {
-            stats.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void updateData(String table, String column, String chatId, String text) {
-        String query = String.format("UPDATE `%s` SET `%s`= \'%s\' WHERE  id = (SELECT MAX(id) FROM `%s` WHERE chatId= \'%s\');", table, column, text, table, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement()) {
-            stats.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void cancelInsert(String table, String chatId) {
-        String query = String.format("delete from `%s` WHERE  id = (SELECT MAX(id) FROM `%s` WHERE chatId= \'%s\');", table, table, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement()) {
-            stats.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void insertData(String table, String chatId) {
-        String query = String.format("INSERT INTO `%s`(`chatId`) " +
-                "VALUES (\'%s\')", table, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement()) {
-            stats.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setCurrentDate(String table, String chatId) {
-        String query = String.format("UPDATE `%s` SET date= NOW() WHERE  id = (SELECT MAX(id) FROM `%s` WHERE chatId= \'%s\');", table, table, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement()) {
-            stats.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void setCurrentTime(String table, String chatId) {
-        String query = String.format("UPDATE `%s` SET time= CURRENT_TIME WHERE  id = (SELECT MAX(id) FROM `%s` WHERE chatId= \'%s\');", table, table, chatId);
-        try (Statement stats = Helper.connectDatabase().createStatement()) {
-            stats.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     //List string

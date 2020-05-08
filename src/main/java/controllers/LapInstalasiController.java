@@ -1,5 +1,7 @@
 package controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -7,15 +9,13 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import models.InstalasiModel;
 import utils.Helper;
+import utils.Query;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -31,6 +31,7 @@ public class LapInstalasiController implements Initializable {
                     "Sedang di Proses",
                     "Telah di Proses"
             );
+    private String statusValue;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -89,6 +90,24 @@ public class LapInstalasiController implements Initializable {
         tbInstalasi.setItems(sortedData);
 
         cb_status.getItems().addAll(statusOption);
+
+
+        btn_saveId.disableProperty().setValue(true);
+        cb_status.getItems().addAll(statusOption);
+        cb_status.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldValue, Number newValue) {
+                if (newValue != null) {
+                    if (statusValue.equals(String.valueOf(cb_status.getItems().get((Integer) newValue)))) {
+                        System.out.println(statusValue);
+                        System.out.println(cb_status.getItems().get((Integer) newValue));
+                        btn_saveId.disableProperty().setValue(true);
+                    } else {
+                        btn_saveId.disableProperty().setValue(false);
+                    }
+                }
+            }
+        });
     }
 
     public void cell_onClick(MouseEvent mouseEvent) {
@@ -123,14 +142,19 @@ public class LapInstalasiController implements Initializable {
 
     @FXML
     void btn_save(ActionEvent event) {
-        cb_status.setValue("fil");
+        Query query = new Query();
+        query.updateData("laporan_gangguan", "status", tf_chatId.getText(), cb_status.getValue());
+        statusValue = cb_status.getValue();
     }
+
 
     //FXML Variables
     @FXML
     private TextField tf_nama, tf_provinsi, tf_kota, tf_kecamatan, tf_kelurahan, tf_alamat, tf_nomorTelepon, tf_email, tf_nik, tf_npwp, tf_layanan, tf_peruntukan, tf_daya, tf_tokenPerdana, tf_id, tf_chatId, tf_date;
     @FXML
     private ChoiceBox<String> cb_status;
+    @FXML
+    private Button btn_saveId;
     @FXML
     private AnchorPane pnl_list, pnl_detail;
     @FXML
