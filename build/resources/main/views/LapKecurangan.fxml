@@ -160,7 +160,8 @@
                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
                 AnchorPane.topAnchor="0.0">
         <children>
-            <TableView fx:id="tbKecurangan" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick" prefHeight="437.0"
+            <TableView fx:id="tbKecurangan" editable="true" layoutY="58.0" onMouseClicked="#cell_onClick"
+                       prefHeight="437.0"
                        prefWidth="725.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0"
                        AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="58.0">
                 <columns>
