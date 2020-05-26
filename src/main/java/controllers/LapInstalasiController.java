@@ -89,9 +89,6 @@ public class LapInstalasiController implements Initializable {
         sortedData.comparatorProperty().bind(tbInstalasi.comparatorProperty());
         tbInstalasi.setItems(sortedData);
 
-        cb_status.getItems().addAll(statusOption);
-
-
         btn_saveId.disableProperty().setValue(true);
         cb_status.getItems().addAll(statusOption);
         cb_status.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -143,7 +140,7 @@ public class LapInstalasiController implements Initializable {
     @FXML
     void btn_save(ActionEvent event) {
         Query query = new Query();
-        query.updateData("laporan_gangguan", "status", tf_chatId.getText(), cb_status.getValue());
+        query.updateData("instalasi_listrik", "status", tf_chatId.getText(), cb_status.getValue(), tf_id.getText());
         statusValue = cb_status.getValue();
     }
 

@@ -121,8 +121,12 @@ public class LapGangguanController implements Initializable {
             tf_alamat.setText(tbGangguan.getSelectionModel().getSelectedItem().getAlamat());
             tf_nomorTelepon.setText(tbGangguan.getSelectionModel().getSelectedItem().getNomorTelepon());
             ta_keterangan.setText(tbGangguan.getSelectionModel().getSelectedItem().getKeterangan());
-            Image image = new Image(tbGangguan.getSelectionModel().getSelectedItem().getMedia());
-            iv_media.setImage(image);
+            try {
+                Image image = new Image(tbGangguan.getSelectionModel().getSelectedItem().getMedia());
+                iv_media.setImage(image);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             statusValue = tbGangguan.getSelectionModel().getSelectedItem().getStatus();
             cb_status.setValue(statusValue);
             pnl_detail.toFront();
@@ -137,7 +141,7 @@ public class LapGangguanController implements Initializable {
     @FXML
     void btn_save(ActionEvent event) {
         Query query = new Query();
-        query.updateData("laporan_gangguan", "status", tf_chatId.getText(), cb_status.getValue());
+        query.updateData("laporan_gangguan", "status", tf_chatId.getText(), cb_status.getValue(), tf_id.getText());
         statusValue = cb_status.getValue();
     }
 

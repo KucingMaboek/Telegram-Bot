@@ -7,12 +7,6 @@
     -fx-background-color: #546e7a;
 }
 
-#item_container{
-    -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
-    -fx-background-radius: 5;
-}
-
 #btn_closeLogin{
     -fx-background-color: rgba(0,0,0,0);
     -fx-background-radius: 0;
@@ -66,6 +60,18 @@
 
 /*end of table styling*/
 
-#tf_search{
-    -fx-background-radius: 5;
+#btn_send, #btn_searchFile, #btn_clear, #btn_save, #btn_back{
+     -fx-background-color: #b0bec5;
+ }
+
+#btn_send:hover, #btn_searchFile:hover, #btn_clear:hover, #btn_save:hover, #btn_back:hover{
+    -fx-background-color: #546e7a;
+}
+
+#ap_dataContainer{
+    -fx-background-color: rgba(232, 232, 232, 0.6);
+}
+
+#ap_background{
+    -fx-background-image:url("../drawable/background.jpg");
 }

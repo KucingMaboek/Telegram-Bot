@@ -25,7 +25,9 @@ public class LoginController {
         String password = String.valueOf(tf_password.getText());
         if (username.equals("admin") && password.equals("admin")) {
             Helper.changeStage(event, "Main");
-        } else {
+        } else if (username.isEmpty() || password.isEmpty()) {
+            txt_hint.setText("*username/password harus diisi");
+        } else{
             txt_hint.setText("*username/password salah");
         }
     }

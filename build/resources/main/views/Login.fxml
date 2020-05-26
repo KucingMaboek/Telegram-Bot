@@ -4,80 +4,56 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0"
-            prefWidth="300.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="310.0" style="-fx-background-color: rgba(0,0,0,0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
     <children>
-        <AnchorPane layoutX="259.0" prefHeight="400.0" prefWidth="40.0"
-                    style="-fx-background-color: #607d8b; -fx-background-radius: 0 0 20 0;"
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="259.0" AnchorPane.rightAnchor="0.0"
-                    AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutX="259.0" prefHeight="400.0" prefWidth="40.0" style="-fx-background-color: #607d8b; -fx-background-radius: 0 0 20 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0.5, 1, 1);" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <children>
-                <Button id="btn_closeLogin" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0"
-                        layoutX="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                        minWidth="-Infinity" mnemonicParsing="false" onAction="#btn_Close" prefHeight="30.0"
-                        prefWidth="30.0" text="Button" textAlignment="CENTER" AnchorPane.leftAnchor="0.0"
-                        AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Button id="btn_closeLogin" alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btn_Close" prefHeight="30.0" prefWidth="30.0" text="Button" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../drawable/baseline_close_black_48dp.png"/>
+                                <Image url="@../drawable/baseline_close_black_48dp.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
             </children>
         </AnchorPane>
-        <AnchorPane prefHeight="400.0" prefWidth="251.0"
-                    style="-fx-background-color: #eceff1; -fx-background-radius: 20 0 0 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                    AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="49.0"
-                    AnchorPane.topAnchor="0.0">
+        <AnchorPane prefHeight="400.0" prefWidth="251.0" style="-fx-background-color: #eceff1; -fx-background-radius: 20 0 0 0; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0.5, 1, 1);" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="5.0">
             <children>
-                <Pane prefHeight="73.0" prefWidth="73.0"
-                      style="-fx-background-radius: 100; -fx-background-color: #607d8b;"/>
-                <TextField fx:id="tf_password" layoutX="36.0" layoutY="180.0" prefWidth="180.0" promptText="Password"
-                           style="-fx-background-radius: 100;"/>
-                <Button id="btn_login" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="46.0"
-                        layoutY="249.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                        minWidth="-Infinity" mnemonicParsing="false" onAction="#btn_Login" prefHeight="39.0"
-                        prefWidth="160.0" text="Login" textAlignment="CENTER" textFill="WHITE">
+                <TextField fx:id="tf_password" layoutX="36.0" layoutY="180.0" prefWidth="180.0" promptText="Password" style="-fx-background-radius: 100;" />
+                <Button id="btn_login" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="46.0" layoutY="249.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#btn_Login" prefHeight="39.0" prefWidth="160.0" text="Login" textAlignment="CENTER" textFill="WHITE">
                     <font>
-                        <Font name="Arial" size="14.0"/>
+                        <Font name="Arial" size="14.0" />
                     </font>
                 </Button>
-                <TextField fx:id="tf_username" layoutX="36.0" layoutY="148.0" prefWidth="180.0" promptText="Username"
-                           style="-fx-background-radius: 100;"/>
-                <Pane layoutY="9.0" prefHeight="86.0" prefWidth="251.0"
-                      style="-fx-background-color: #90a4ae; -fx-background-radius: 20 0 0 0;"
-                      AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                      AnchorPane.topAnchor="0.0">
+                <TextField fx:id="tf_username" layoutX="36.0" layoutY="148.0" prefWidth="180.0" promptText="Username" style="-fx-background-radius: 100;" />
+                <Pane layoutY="9.0" prefHeight="86.0" prefWidth="251.0" style="-fx-background-color: #90a4ae; -fx-background-radius: 20 0 0 0;" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Text fill="#607d8b" layoutX="75.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="SIGN IN" textAlignment="CENTER">
+                        <Text fill="#607d8b" layoutX="75.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN IN" textAlignment="CENTER">
                             <font>
-                                <Font name="Arial Bold" size="25.0"/>
+                                <Font name="Arial Bold" size="25.0" />
                             </font>
                         </Text>
-                        <AnchorPane layoutX="85.0" layoutY="52.0" prefHeight="73.0" prefWidth="73.0"
-                                    style="-fx-background-color: #607d8b; -fx-background-radius: 100; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);">
+                        <AnchorPane layoutX="85.0" layoutY="52.0" prefHeight="73.0" prefWidth="73.0" style="-fx-background-color: #607d8b; -fx-background-radius: 100; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);">
                             <children>
-                                <ImageView fitHeight="73.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true"
-                                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <ImageView fitHeight="73.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <image>
-                                        <Image url="@../drawable/round_account_circle_white_48dp.png"/>
+                                        <Image url="@../drawable/round_account_circle_white_48dp.png" />
                                     </image>
                                 </ImageView>
                             </children>
                         </AnchorPane>
                     </children>
                 </Pane>
-                <Text fx:id="txt_hint" fill="#d61414" layoutX="36.0" layoutY="226.0" strokeType="OUTSIDE"
-                      strokeWidth="0.0" text="*Hint: admin">
+                <Text fx:id="txt_hint" fill="#d61414" layoutX="36.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0">
                     <font>
-                        <Font name="Arial" size="12.0"/>
+                        <Font name="Arial" size="12.0" />
                     </font>
                 </Text>
             </children>

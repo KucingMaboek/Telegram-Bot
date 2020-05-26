@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.KelolaChannelController">
+<AnchorPane id="ap_background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="755.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.KelolaChannelController">
     <children>
         <TextArea fx:id="ta_messageCaption" layoutX="30.0" layoutY="110.0" prefHeight="340.0" prefWidth="725.0" wrapText="true" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="95.0" />
-        <Button layoutX="361.0" layoutY="35.0" mnemonicParsing="false" onAction="#btn_searhFile" text="Search File">
+        <Button id="btn_searchFile" layoutX="361.0" layoutY="35.0" mnemonicParsing="false" onAction="#btn_searhFile" style="-fx-background-radius: 0;" text="Search File">
             <graphic>
                 <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -21,8 +21,8 @@
             </graphic>
         </Button>
         <TextField fx:id="tf_currentFile" editable="false" layoutX="15.0" layoutY="35.0" prefHeight="25.0" prefWidth="335.0" />
-        <Button layoutX="461.0" layoutY="35.0" mnemonicParsing="false" onAction="#btn_clearFile" text="Clear" />
-        <Button layoutX="15.0" layoutY="458.0" mnemonicParsing="false" onAction="#btn_sendBroadcast" prefHeight="25.0" prefWidth="75.0" text="Send" />
+        <Button id="btn_clear" layoutX="461.0" layoutY="35.0" mnemonicParsing="false" onAction="#btn_clearFile" style="-fx-background-radius: 0;" text="Clear" />
+        <Button id="btn_send" layoutX="15.0" layoutY="458.0" mnemonicParsing="false" onAction="#btn_sendBroadcast" prefHeight="25.0" prefWidth="75.0" style="-fx-background-radius: 0;" text="Send" />
         <Text fx:id="txt_feedback" layoutX="98.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <Text layoutX="15.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Attachment" />
       <Text layoutX="14.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messages" />
