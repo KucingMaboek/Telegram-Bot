@@ -20,6 +20,7 @@ import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Helper {
     private static String netConnectionStats;
@@ -76,7 +77,7 @@ public class Helper {
     private static final String HOSTNAME = "localhost";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "";
-    private static final String DATABASE = "telegrambot";
+    private static final String DATABASE = "plnbot";
     private static final int PORT = 3306;
     private static String URI = String.format("jdbc:mysql://%s:%d/%s?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
             HOSTNAME, PORT, DATABASE);
@@ -150,6 +151,14 @@ public class Helper {
             return json;
         } finally {
             is.close();
+        }
+    }
+
+    public static void query(String query){
+        try(Statement statement = Helper.connectDatabase().createStatement()){
+            statement.executeUpdate(query);
+        } catch (SQLException e){
+            e.printStackTrace();
         }
     }
 

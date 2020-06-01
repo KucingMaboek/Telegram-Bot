@@ -1,3 +1,0 @@
-username bot : @ChatPLN_bot
-link chat : https://t.me/ChatPLN_bot
-link channel : https://t.me/pln_newsfeed

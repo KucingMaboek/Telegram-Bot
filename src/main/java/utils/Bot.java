@@ -18,9 +18,26 @@ public class Bot extends TelegramLongPollingBot {
         SendMessage sendMessage = new SendMessage().setChatId(update.getMessage().getChatId());
         MessageHandler message = new MessageHandler();
         update.getMessage().getFrom().getUserName();
-        String chatId = String.valueOf(update.getMessage().getChatId());
+
         String text = null;
+        String chatId = String.valueOf(update.getMessage().getChatId());
         String username = String.valueOf(update.getMessage().getFrom().getUserName());
+        String first_name = String.valueOf(update.getMessage().getFrom().getFirstName());
+        String last_name = String.valueOf(update.getMessage().getFrom().getLastName());
+
+        String query = String.format("INSERT INTO tg_account_data (chatId, first_name)\n" +
+                "SELECT * FROM (SELECT \'%s\', \'%s\') AS tmp\n" +
+                "WHERE NOT EXISTS (\n" +
+                "    SELECT chatId FROM tg_account_data WHERE chatId = \'%s\'\n" +
+                ") LIMIT 1;", chatId, first_name, chatId);
+        String queryUpdate = String.format("update tg_account_data set username = \'%s\'," +
+                " first_name = \'%s\'," +
+                " last_name = \'%s\' " +
+                "where chatId = \'%s\'",
+                username, first_name, last_name, chatId);
+        Helper.query(query);
+        Helper.query(queryUpdate);
+
         String url;
         if (update.getMessage().hasPhoto()) {
             String fileId = update.getMessage().getPhoto().get(0).getFileId();
