@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2020 at 08:56 PM
+-- Generation Time: Jun 18, 2020 at 05:39 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -41,7 +41,7 @@ CREATE TABLE `conversation` (
 --
 
 INSERT INTO `conversation` (`id`, `chatId`, `username`, `requestCode`, `text`) VALUES
-(7, '692695611', 'kucingmaboek', '000', 'ya');
+(7, '692695611', 'kucingmaboek', '000', '1');
 
 -- --------------------------------------------------------
 
@@ -98,6 +98,13 @@ CREATE TABLE `laporan_gangguan` (
   `media` varchar(255) DEFAULT NULL,
   `status` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laporan_gangguan`
+--
+
+INSERT INTO `laporan_gangguan` (`id`, `date`, `chatId`, `nama`, `provinsi`, `kota`, `kecamatan`, `kelurahan`, `alamat`, `nomorTelepon`, `keterangan`, `media`, `status`) VALUES
+(2, '2020-06-17', '692695611', 'Iqbal', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'https://api.telegram.org/file/bot1015235115:AAHrIAwEI5H8w4JKjWrasPJtUSeReeyR87M/photos/file_10.jpg', 'Belum di Proses');
 
 -- --------------------------------------------------------
 
@@ -259,7 +266,7 @@ ALTER TABLE `instalasi_listrik`
 -- AUTO_INCREMENT for table `laporan_gangguan`
 --
 ALTER TABLE `laporan_gangguan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `laporan_kecurangan`

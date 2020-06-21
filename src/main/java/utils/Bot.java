@@ -81,8 +81,8 @@ public class Bot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
+        //token bot telegram
         return "1015235115:AAHrIAwEI5H8w4JKjWrasPJtUSeReeyR87M";
-//        return "1208946764:AAGXHSYwDRD1h9HHb6ZKLnQChzbNnB4zlr8";
     }
 
     public void broadcast(File file, String messages) throws TelegramApiException {

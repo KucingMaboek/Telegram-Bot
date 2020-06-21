@@ -77,7 +77,7 @@ public class LapGangguanController implements Initializable {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 } else if (gangguanModel.getKeterangan().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
+                    return true;
                 } else {
                     return false; // Does not match.
                 }

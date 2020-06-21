@@ -140,12 +140,12 @@ public class MessageHandler {
                     message = cmd_114(chatId);
                     break;
                 case "114":
-                    if (text.equalsIgnoreCase("YA")) {
+                    if (text.equalsIgnoreCase("YA") || text.equals("1")) {
                         query.updateConversation("000", chatId, text);
                         query.setCurrentDate("instalasi_listrik", chatId);
                         query.updateData("instalasi_listrik", "status", chatId, "Belum di Proses");
                         message = cmd_115a;
-                    } else if (text.equalsIgnoreCase("TIDAK")) {
+                    } else if (text.equalsIgnoreCase("TIDAK") || text.equals("2")) {
                         query.updateConversation("000", chatId, text);
                         query.cancelInsert("instalasi_listrik", chatId);
                         message = cmd_115b;
@@ -194,10 +194,10 @@ public class MessageHandler {
                     message = cmd_208;
                     break;
                 case "208":
-                    if (text.equalsIgnoreCase("YA")) {
+                    if (text.equalsIgnoreCase("YA") || text.equals("1")) {
                         query.updateConversation("209", chatId, text);
                         message = cmd_209;
-                    } else if (text.equalsIgnoreCase("TIDAK")) {
+                    } else if (text.equalsIgnoreCase("TIDAK") || text.equals("2")) {
                         query.updateConversation("210", chatId, text);
                         message = cmd_210(chatId);
                     } else {
@@ -214,12 +214,12 @@ public class MessageHandler {
                     }
                     break;
                 case "210":
-                    if (text.equalsIgnoreCase("YA")) {
+                    if (text.equalsIgnoreCase("YA") || text.equals("1")) {
                         query.updateConversation("000", chatId, text);
                         query.setCurrentDate("laporan_gangguan", chatId);
                         query.updateData("laporan_gangguan", "status", chatId, "Belum di Proses");
                         message = cmd_211a;
-                    } else if (text.equalsIgnoreCase("TIDAK")) {
+                    } else if (text.equalsIgnoreCase("TIDAK") || text.equals("2")) {
                         query.updateConversation("000", chatId, text);
                         query.cancelInsert("laporan_gangguan", chatId);
                         message = cmd_211b;
@@ -268,10 +268,10 @@ public class MessageHandler {
                     message = cmd_308;
                     break;
                 case "308":
-                    if (text.equalsIgnoreCase("YA")) {
+                    if (text.equalsIgnoreCase("YA") || text.equals("1")) {
                         query.updateConversation("309", chatId, text);
                         message = cmd_309;
-                    } else if (text.equalsIgnoreCase("TIDAK")) {
+                    } else if (text.equalsIgnoreCase("TIDAK") || text.equals("2")) {
                         query.updateConversation("310", chatId, text);
                         message = cmd_310(chatId);
                     } else {
@@ -288,12 +288,12 @@ public class MessageHandler {
                     }
                     break;
                 case "310":
-                    if (text.equalsIgnoreCase("YA")) {
+                    if (text.equalsIgnoreCase("YA") || text.equals("1")) {
                         query.updateConversation("000", chatId, text);
                         query.setCurrentDate("laporan_kecurangan", chatId);
                         query.updateData("laporan_kecurangan", "status", chatId, "Belum di Proses");
                         message = cmd_311a;
-                    } else if (text.equalsIgnoreCase("TIDAK")) {
+                    } else if (text.equalsIgnoreCase("TIDAK") || text.equals("2")) {
                         query.updateConversation("000", chatId, text);
                         query.cancelInsert("laporan_kecurangan", chatId);
                         message = cmd_311b;
@@ -302,14 +302,14 @@ public class MessageHandler {
                     }
                     break;
                 case "400":
-                    if (text.equalsIgnoreCase("YA")) {
+                    if (text.equalsIgnoreCase("YA") || text.equals("1")) {
                         query.updateConversation("000", chatId, text);
                         query.setCurrentDate("permintaan_livechat", chatId);
                         query.setCurrentTime("permintaan_livechat", chatId);
                         query.updateData("permintaan_livechat", "username", chatId, "https://t.me/" + username);
                         query.updateData("permintaan_livechat", "status", chatId, "Belum di Proses");
                         message = cmd_401a;
-                    } else if (text.equalsIgnoreCase("TIDAK")) {
+                    } else if (text.equalsIgnoreCase("TIDAK") || text.equals("2")) {
                         query.updateConversation("000", chatId, text);
                         query.cancelInsert("permintaan_livechat", chatId);
                         message = cmd_401b;
@@ -375,7 +375,8 @@ public class MessageHandler {
                         "\nPeruntukan : " + previewRS.getString("peruntukan") +
                         "\nDaya : " + previewRS.getString("daya") +
                         "\nToken Perdana : " + previewRS.getString("tokenPerdana") +
-                        "\nApakah data ini sudah benar? (Balas \'YA\' jika benar dan \'TIDAK\' apabila ada data yang salah):";
+                        "\nApakah data ini sudah benar? (Balas \'YA\' jika benar dan \'TIDAK\' apabila ada data yang salah):" +
+                        "\n1.YA\n2.TIDAK";
             }
             stats.close();
             previewRS.close();
@@ -396,7 +397,7 @@ public class MessageHandler {
     private String cmd_205 = "Masukkan alamat kejadian:";
     private String cmd_206 = "Masukkan nomor telepon anda yang dapat dihubungi:";
     private String cmd_207 = "Mohon uraikan laporan anda mengenai gangguan tersebut (Kondisi saat ini, sejak kapan terjadi, seberapa sering terjadi, dan penjelasan secara singkat):";
-    private String cmd_208 = "Apakah ada media berupa foto atau video yang dapat menerangkan kejadian tersebut? (YA/TIDAK):";
+    private String cmd_208 = "Apakah ada media berupa foto atau video yang dapat menerangkan kejadian tersebut?: \n1.YA\n2.TIDAK";
     private String cmd_209 = "Mohon upload media berupa foto ataupun video (Cukup 1 Saja):";
 
     private String cmd_210(String chatId) {
@@ -414,8 +415,9 @@ public class MessageHandler {
                         "\nAlamat : " + previewRS.getString("alamat") +
                         "\nNomor Telepon : " + previewRS.getString("nomorTelepon") +
                         "\nUraian : " + previewRS.getString("keterangan") +
-                        "\nMedia : " + previewRS.getString("media") +
-                        "\nApakah data ini sudah benar? (Balas \'YA\' jika benar dan \'TIDAK\' apabila ada data yang salah):";
+//                        "\nMedia : " + previewRS.getString("media") +
+                        "\nApakah data ini sudah benar? (Balas \'YA\' jika benar dan \'TIDAK\' apabila ada data yang salah):" +
+                        "\n1.YA\n2.TIDAK";
             }
             stats.close();
             previewRS.close();
@@ -436,7 +438,7 @@ public class MessageHandler {
     private String cmd_305 = "Masukkan alamat terjadinya tindakan kecurangan:";
     private String cmd_306 = "Masukkan nomor telepon anda yang dapat kami hubungi:";
     private String cmd_307 = "Mohon uraikan laporan anda mengenai kecurangan tersebut (Bentuk kecurangan, pelaku, seberapa sering melakukan, dan rincian secara singkat):";
-    private String cmd_308 = "Apakah ada media berupa foto atau video yang dapat menerangkan kejadian tersebut? (YA/TIDAK):";
+    private String cmd_308 = "Apakah ada media berupa foto atau video yang dapat menerangkan kejadian tersebut?: \n1.YA\n2.TIDAK";
     private String cmd_309 = "Mohon upload media berupa foto ataupun video (Cukup 1 Saja):";
 
     private String cmd_310(String chatId) {
@@ -454,8 +456,9 @@ public class MessageHandler {
                         "\nAlamat terjadinya kecurangan: " + previewRS.getString("alamat") +
                         "\nNomor Telepon Pelapor: " + previewRS.getString("nomorTelepon") +
                         "\nUraian : " + previewRS.getString("keterangan") +
-                        "\nMedia : " + previewRS.getString("media") +
-                        "\nApakah data ini sudah benar? (Balas \'YA\' jika benar dan \'TIDAK\' apabila ada data yang salah):";
+//                        "\nMedia : " + previewRS.getString("media") +
+                        "\nApakah data ini sudah benar? (Balas \'YA\' jika benar dan \'TIDAK\' apabila ada data yang salah):" +
+                        "\n1.YA\n2.TIDAK";
             }
             stats.close();
             previewRS.close();

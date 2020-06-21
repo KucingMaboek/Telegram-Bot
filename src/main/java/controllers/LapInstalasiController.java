@@ -78,7 +78,7 @@ public class LapInstalasiController implements Initializable {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 } else if (instalasiModel.getNama().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
+                    return true;
                 } else {
                     return false; // Does not match.
                 }

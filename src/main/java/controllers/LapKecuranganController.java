@@ -38,12 +38,10 @@ public class LapKecuranganController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        //make sure the property value factory should be exactly same as the e.g getStudentId from your model class
         chatID.setCellValueFactory(new PropertyValueFactory<>("chatId"));
         laporan.setCellValueFactory(new PropertyValueFactory<>("keterangan"));
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
         status.setCellValueFactory(new PropertyValueFactory<>("status"));
-        //add your data to the table here.
         try {
             String query = "select * from `laporan_kecurangan` where status is not null";
             Statement stats = Helper.connectDatabase().createStatement();
@@ -78,7 +76,7 @@ public class LapKecuranganController implements Initializable {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 } else if (kecuranganModel.getKeterangan().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter matches first name.
+                    return true;
                 } else {
                     return false; // Does not match.
                 }

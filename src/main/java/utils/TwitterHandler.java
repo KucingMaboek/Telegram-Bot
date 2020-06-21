@@ -33,9 +33,10 @@ public class TwitterHandler {
         TwitterFactory tf = new TwitterFactory(cb.build());
         twitter = tf.getInstance();
 
+        //tambahkan user yang ingin di fetch
         followedUser = new long[]{
-                twitter.showUser("@pln_123").getId(),
-                twitter.showUser("@_pln_id").getId(),
+//                twitter.showUser("@pln_123").getId(),
+//                twitter.showUser("@_pln_id").getId(),
                 twitter.showUser("@bambangsupra2").getId()
         };
         streamTwitter();
